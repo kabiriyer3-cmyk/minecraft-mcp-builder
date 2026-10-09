@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "mcpbuilder",
+  "version": "${version}",
+  "name": "MCP Builder",
+  "description": "Built-in MCP server: connect Claude, Cursor or any MCP-capable AI and ask it to build structures in your world.",
+  "authors": ["hurma"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.hurma.mcpbuilder.McpBuilderMod"],
+    "modmenu": ["com.hurma.mcpbuilder.client.ModMenuIntegration"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}

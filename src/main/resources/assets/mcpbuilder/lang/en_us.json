@@ -1,0 +1,21 @@
+{
+  "mcpbuilder.config.title": "MCP Builder Settings",
+  "mcpbuilder.config.host": "Host (127.0.0.1 = local only)",
+  "mcpbuilder.config.port": "Port",
+  "mcpbuilder.config.token": "Auth token (empty = none)",
+  "mcpbuilder.config.target_player": "Target player (empty = first)",
+  "mcpbuilder.config.max_blocks": "Max blocks per request",
+  "mcpbuilder.config.undo_history": "Undo history size",
+  "mcpbuilder.config.enabled": "MCP server",
+  "mcpbuilder.config.allow_commands": "Allow AI commands",
+  "mcpbuilder.config.chat_notifications": "Chat notifications",
+  "mcpbuilder.config.auto_connect": "Auto-connect blocks",
+  "mcpbuilder.config.generate_token": "Generate token",
+  "mcpbuilder.config.copy_endpoint": "Copy MCP URL",
+  "mcpbuilder.config.copied": "Copied: %s",
+  "mcpbuilder.config.save": "Save & apply",
+  "mcpbuilder.config.status.running": "MCP server running: %s",
+  "mcpbuilder.config.status.stopped": "MCP server stopped (starts when a world is loaded): %s",
+  "mcpbuilder.config.error.port": "Port must be a number from 1 to 65535",
+  "mcpbuilder.config.error.number": "Max blocks must be >= 1 and undo history >= 0"
+}

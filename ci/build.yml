@@ -1,0 +1,50 @@
+# Move this file to .github/workflows/build.yml to enable automatic builds.
+name: Build mod
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10'
+
+      - name: Build
+        run: gradle build --stacktrace --no-daemon
+
+      - name: Upload jar artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mcpbuilder-jar
+          path: build/libs/*.jar
+          if-no-files-found: error
+
+      - name: Publish release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: MCP Builder (build ${{ github.run_number }})
+          body: |
+            Automatic build for Minecraft 1.21.1 (Fabric).
+            Requires Fabric API. Mod Menu is optional (for the settings screen).
+          files: build/libs/*.jar

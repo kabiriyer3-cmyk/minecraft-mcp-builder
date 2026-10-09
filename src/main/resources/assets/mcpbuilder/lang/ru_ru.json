@@ -1,0 +1,21 @@
+{
+  "mcpbuilder.config.title": "Настройки MCP Builder",
+  "mcpbuilder.config.host": "Хост (127.0.0.1 = только этот ПК)",
+  "mcpbuilder.config.port": "Порт",
+  "mcpbuilder.config.token": "Токен доступа (пусто = без)",
+  "mcpbuilder.config.target_player": "Игрок (пусто = первый)",
+  "mcpbuilder.config.max_blocks": "Макс. блоков за запрос",
+  "mcpbuilder.config.undo_history": "Глубина отмены (undo)",
+  "mcpbuilder.config.enabled": "MCP сервер",
+  "mcpbuilder.config.allow_commands": "Команды от ИИ",
+  "mcpbuilder.config.chat_notifications": "Уведомления в чат",
+  "mcpbuilder.config.auto_connect": "Соединять блоки",
+  "mcpbuilder.config.generate_token": "Сгенерировать токен",
+  "mcpbuilder.config.copy_endpoint": "Копировать MCP URL",
+  "mcpbuilder.config.copied": "Скопировано: %s",
+  "mcpbuilder.config.save": "Сохранить",
+  "mcpbuilder.config.status.running": "MCP сервер работает: %s",
+  "mcpbuilder.config.status.stopped": "MCP сервер выключен (стартует при входе в мир): %s",
+  "mcpbuilder.config.error.port": "Порт должен быть числом от 1 до 65535",
+  "mcpbuilder.config.error.number": "Макс. блоков >= 1, глубина отмены >= 0"
+}
