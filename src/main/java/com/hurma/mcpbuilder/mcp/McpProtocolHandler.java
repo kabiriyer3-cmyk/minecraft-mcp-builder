@@ -13,15 +13,19 @@ import java.util.List;
 public class McpProtocolHandler {
     private static final List<String> SUPPORTED_VERSIONS = List.of("2025-06-18", "2025-03-26", "2024-11-05");
     private static final String INSTRUCTIONS = String.join("\n",
-            "You are connected to a live Minecraft Java Edition 1.21.1 world and can build in it.",
+            "You are connected to a live Minecraft Java Edition 1.21.1 world and can build in it. Aim for highly detailed, professional-looking builds.",
             "Coordinates: +X = east, -X = west, +Y = up, +Z = south, -Z = north.",
-            "Workflow: 1) call get_player_info to learn where the player stands and which way they face;",
-            "2) use get_height / scan_area to inspect the terrain; 3) build a few blocks in front of the player, never on top of them;",
-            "4) use fill for floors, walls and boxes, build_sphere / build_cylinder / build_line for shapes,",
-            "and place_blocks for details (batch hundreds of blocks per call, use 'origin' with relative coordinates and a 'palette' to save tokens);",
-            "5) if something looks wrong, call undo.",
-            "Block ids use command syntax with optional states, e.g. minecraft:oak_stairs[facing=north,half=bottom], minecraft:lantern[hanging=true], minecraft:spruce_slab[type=top].",
-            "For great-looking builds: mix several materials, add depth to walls (pillars, frames), real roofs with stairs and slabs, windows, lighting and decoration.");
+            "Before a big build call get_building_guide (topic 'techniques', then the style) and get_player_info (looking_at is a good anchor).",
+            "Every block parameter accepts patterns: block states/NBT (minecraft:oak_stairs[facing=north,half=top]) and weighted mixes for texture",
+            "('60%minecraft:stone_bricks,25%minecraft:cracked_stone_bricks,15%minecraft:mossy_stone_bricks'). Use search_blocks to find ids and valid states.",
+            "Toolbox: fill (replace/hollow/walls/outline/keep + mask), build_cylinder, build_sphere, build_shape (ellipsoid, cone/spire with curve, pyramid, torus),",
+            "build_arch (gothic/round arches, doors and windows with fill), build_roof (gable/hip stair roofs with ridge and gables), build_curve (splines with taper: branches, buttresses, bridges),",
+            "build_blueprint (ASCII layers + palette: the best way to place intricate designed details), clone_region (copy with rotate/mirror/repeat for symmetry and repeated bays),",
+            "replace_blocks (weathering/texture with chance and clustered noise, keeps stair orientation), gradient_fill (colour/age gradients), decorate_surface (moss, vines, lanterns, flowers),",
+            "place_blocks / set_block for single blocks, run_command for entities (armor stands, item frames, paintings).",
+            "Work in passes: massing -> roofs -> openings -> depth layers (pillars, trims, sills, corbels: never leave flat walls) -> texture pass -> decoration -> review.",
+            "Review with view_area (top, slice, south/east/... elevations) after each major step and fix problems. If something looks wrong, call undo.",
+            "Build a few blocks away from the player, never on top of them.");
 
     private final BuildTools tools;
 
